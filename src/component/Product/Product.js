@@ -1,6 +1,12 @@
 import React from 'react';
 
 function Product() {
-	return <div>Product</div>;
+	return <div>
+		{props,name}
+
+
+
+
+	</div>;
 }
 export default Product;

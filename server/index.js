@@ -3,10 +3,9 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const massive = require('massive');
 const app = express();
-const {controls} = require('./controller')
+const products_controller = require('./controller');
 
 app.use(bodyParser.json());
-
 
 massive(process.env.CONNECTION_STRING)
 	.then(dbInstance => {
@@ -15,4 +14,6 @@ massive(process.env.CONNECTION_STRING)
 	.catch(error => console.log(error));
 
 const port = process.env.PORT || 3001;
-app.listen(port, () => console.log(`Listening on ${port}`));
+app.listen(port, () => {
+	console.log(`Listening on ${port}`);
+});

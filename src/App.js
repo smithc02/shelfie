@@ -8,14 +8,27 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			inventoy: []
+			inventory: [{name:'',price:0,image:''}]
 		};
 	}
 	render() {
+		const { inventory } = this.state;
+
+		let productDisplay = this.state.inventory.map((item, i) => {
+			return (
+				<Dashboard
+					key={i}
+					name={inventory.name}
+					price={inventory.price}
+					image={inventory.image}
+				/>
+			);
+		});
+
 		return (
 			<div className="App">
 				<Header />
-				<Dashboard />
+				{productDisplay}
 				<Form />
 			</div>
 		);
