@@ -1,9 +1,18 @@
+require('dotenv').config();
+const bodyParser = require('body-parser');
 const express = require('express');
-const { json } = require('body-parser');
-
-const port = 3001;
-
+const massive = require('massive');
 const app = express();
-app.use(json());
+const {controls} = require('./controller')
 
+app.use(bodyParser.json());
+
+
+massive(process.env.CONNECTION_STRING)
+	.then(dbInstance => {
+		app.set('db', dbInstance);
+	})
+	.catch(error => console.log(error));
+
+const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`Listening on ${port}`));
