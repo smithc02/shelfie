@@ -1,17 +1,21 @@
 require('dotenv').config();
-const bodyParser = require('body-parser');
+const { json } = require('body-parser');
 const express = require('express');
 const massive = require('massive');
 const app = express();
-const products_controller = require('./controller');
+const controller = require('./controller');
 
-app.use(bodyParser.json());
+app.use(json());
 
 massive(process.env.CONNECTION_STRING)
 	.then(dbInstance => {
-		app.set('db', dbInstance);
+		// console.log(dbInstance)
+		app.set("db", dbInstance);
 	})
-	.catch(error => console.log(error));
+	.catch(err => console.log(err));
+
+app.get("/api/inventory", controller.getInventory);
+app.post('/api/inventory/:id', controller.create)
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {

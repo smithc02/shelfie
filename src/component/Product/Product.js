@@ -1,12 +1,6 @@
 import React from 'react';
 
-function Product() {
-	return <div>
-		{props,name}
-
-
-
-
-	</div>;
-}
+const Product = props => {
+	return <div />;
+};
 export default Product;
