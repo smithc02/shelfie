@@ -1,6 +1,10 @@
 import React from 'react';
 
 const Product = props => {
-	return <div />;
+	return (
+		<div>
+			
+		</div>
+	)
 };
 export default Product;

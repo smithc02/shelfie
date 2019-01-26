@@ -8,7 +8,7 @@ module.exports = {
 			.catch(err => {
 				console.log(err);
 			});
-		console.log(err);
+		
 	},
 	create: (req, res, next) => {
 		const dbInstance = req.app.get('db');
